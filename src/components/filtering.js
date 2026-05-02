@@ -22,13 +22,16 @@ export function initFiltering(elements, indexes) {
     });
   return (data, state, action) => {
     // @todo: #4.2 — обработать очистку поля
-    if (action && action.name == 'clear') {
-      const parentElement = action.parentElement;
-      const input = parentElement.querySelector('input');
-      if (input) {
-        input.value = '';
-      }
-    }
+   // преобразуем диапазон
+if (state.totalFrom || state.totalTo) {
+  state.total = [
+    state.totalFrom ? Number(state.totalFrom) : undefined,
+    state.totalTo ? Number(state.totalTo) : undefined
+  ];
+
+  delete state.totalFrom;
+  delete state.totalTo;
+}
     // @todo: #4.5 — отфильтровать данные используя компаратор
     return data.filter((row) => compare(row, state));
   };
