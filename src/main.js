@@ -21,8 +21,8 @@ const api = initData(sourceData);
  */
 function collectState() {
   const state = processFormData(new FormData(sampleTable.container));
-  const rowsPerPage = parseInt(state.rowsPerPage);
-  const page = parseInt(state.page ?? 1);
+  const rowsPerPage = parseInt(state.rowsPerPage) || 10;
+  const page = parseInt(state.page) || 1;
   return {
     ...state,
     rowsPerPage,
