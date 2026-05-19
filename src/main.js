@@ -6,13 +6,15 @@ import { processFormData } from './lib/utils.js';
 
 import { initTable } from './components/table.js';
 
+import { data as sourceData } from './data/dataset_1.js';
+
 // @todo: подключение
 import { initPagination } from './components/pagination.js';
 import { initSorting } from './components/sorting.js';
 import { initFiltering } from './components/filtering.js';
 import { initSearching } from './components/searching.js';
 // Исходные данные используемые в render()
-const api = initData();
+const api = initData(sourceData);
 
 /**
  * Сбор и обработка полей из таблицы
